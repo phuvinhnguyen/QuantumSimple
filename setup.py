@@ -13,6 +13,7 @@ setup(
         'scipy==1.14.0',
         'networkx==3.3',
         'torch>=2.1.2',
+        'torch_geometric>=2.1.0',
     ],
     test_suite='tests',
     tests_require=[

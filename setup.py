@@ -7,6 +7,7 @@ setup(
     author='Your Name',
     author_email='your.email@example.com',
     packages=find_packages(),
+    include_package_data=True,
     package_data={
         'qm7': ['QM7/data/*.mat'],  # Include all .txt files in the data directory
     },

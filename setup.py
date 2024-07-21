@@ -7,6 +7,9 @@ setup(
     author='Your Name',
     author_email='your.email@example.com',
     packages=find_packages(),
+    package_data={
+        'qm7': ['QM7/data/*.mat'],  # Include all .txt files in the data directory
+    },
     install_requires=[
         'xgboost==2.1.0',
         'scikit-learn==1.5.0',

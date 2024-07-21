@@ -9,11 +9,10 @@ setup(
     packages=find_packages(),
     install_requires=[
         'xgboost==2.1.0',
-        'numpy==1.26.4',
         'scikit-learn==1.5.0',
         'scipy==1.14.0',
         'networkx==3.3',
-        'torch==2.3.1',
+        'torch>=2.1.2',
     ],
     test_suite='tests',
     tests_require=[

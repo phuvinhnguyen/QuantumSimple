@@ -5,7 +5,7 @@ from torch_geometric.data import Data, DataLoader
 from torch.utils.data import ConcatDataset
 import os
 
-WORKING_DIR = os.getcwd()
+WORKING_DIR = os.path.abspath(__file__)
 
 def create_graph(coulomb_matrix, energy):
     num_atoms = coulomb_matrix.shape[0]

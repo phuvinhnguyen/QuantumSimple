@@ -11,11 +11,9 @@ setup(
         'xgboost==1.0.2',
         'numpy==1.16.4',
         'scikit-learn==0.20.3',
-        'matplotlib==3.0.3',
-        'seaborn==0.9.0',
         'scipy==1.2.1',
         'networkx==2.3',
-        'torch==1.1.0',
+        'torch==2.3.1',
     ],
     test_suite='tests',
     tests_require=[

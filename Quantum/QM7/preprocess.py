@@ -4,6 +4,9 @@ import torch
 from torch_geometric.data import Data, DataLoader
 from torch.utils.data import ConcatDataset
 import os
+# import pkg_resources
+
+# DATA_PATH = pkg_resources.resource_filename('Quantum', 'QM7/data/qm7.txt')
 
 WORKING_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -56,7 +59,7 @@ def create_dataloader_list(
     }
 
 def load_dataset(batch_size=32, shuffle=True, donot_loader=False):
-    data = scipy.io.loadmat(os.path.join(WORKING_DIR, 'data/QM7.mat'))
+    data = scipy.io.loadmat(os.path.join(WORKING_DIR, 'data/qm7.mat'))
     coulomb_matrices = data['X']
     atomization_energies = data['T'].flatten()
 

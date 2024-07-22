@@ -19,11 +19,22 @@ def run(method_name='all'):
     elif method_name == 'XGBoost':
         XGBoost_run()
     elif method_name == 'all':
+        print('Running GP')
         GP_run()
+
+        print('Running SVR')
         SVR_run()
+
+        print('Running SimpleGNN')
         SimpleGNN_run()
+
+        print('Running linear')
         linear_run()
+
+        print('Running mlp')
         mlp_run()
+
+        print('Running XGBoost')
         XGBoost_run()
     else:
         print('''

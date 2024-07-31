@@ -1,5 +1,4 @@
 import numpy as np
-from torch.utils.data import ConcatDataset
 
 def preprocess_data(data):
     X = np.array([i.edge_attr.flatten() for i in data])

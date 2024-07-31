@@ -1,4 +1,4 @@
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from ..train.MLTrain import preprocess_data
 
 def run_example(
@@ -36,8 +36,9 @@ def eval(
     Y_predict = model.predict(X_test)
 
     mse = mean_squared_error(Y_test, Y_predict)
+    mae = mean_absolute_error(Y_test, Y_predict)
     r2 = r2_score(Y_test, Y_predict)
 
-    print(f'Test result: MSE = {mse:.4f}, R2 = {r2:.4f}')
+    print(f'Test result: MSE = {mse:.4f}, MAE = {mae:.4f}, R2 = {r2:.4f}')
 
     run_example(model, (X_test, Y_test), (X_train, Y_train))

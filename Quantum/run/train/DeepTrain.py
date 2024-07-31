@@ -8,7 +8,7 @@ def test_(model, loader, device='cpu'):
         for data in loader:
             data = data.to(device)
             output = model(data)
-            error += F.l1_loss(output, data.y).item() * data.num_graphs
+            error += F.l1_loss(output, data.y).item()
     return error / len(loader.dataset)
 
 def train_(
@@ -26,7 +26,7 @@ def train_(
         output = model(data)
         loss = criterion(output, data.y)
         loss.backward()
-        loss_all += data.num_graphs * loss.item()
+        loss_all += loss.item()
         optimizer.step()
     return loss_all / len(loader.dataset)
 

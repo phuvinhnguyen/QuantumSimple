@@ -1,6 +1,6 @@
 import torch
 import torch.nn.functional as F
-from sklearn.metrics import r2_score
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 
 def run_example(
         model,
@@ -59,8 +59,6 @@ def eval(
         device='cpu',
         ):
     model.eval()
-    mse_error = 0.0
-    mae_error = 0.0
     all_outputs = []
     all_targets = []
 
@@ -68,16 +66,17 @@ def eval(
         for data in loader:
             data = data.to(device)
             output = model(data)
-            mse_error += F.mse_loss(output, data.y, reduction='sum').item()  # Sum MSE loss for each batch
-            mae_error += F.l1_loss(output, data.y, reduction='sum').item()  # Sum MAE loss for each batch
             all_outputs.append(output.cpu())
             all_targets.append(data.y.cpu())
 
     all_outputs = torch.cat(all_outputs, dim=0).numpy()
     all_targets = torch.cat(all_targets, dim=0).numpy()
+
+    mse_error = mean_squared_error(all_targets, all_outputs)
+    mae_error = mean_absolute_error(all_targets, all_outputs)
     r2 = r2_score(all_targets, all_outputs)
 
-    print(f'Test result: MSE = {mse_error / len(loader.dataset):.4f}, MAE = {mae_error / len(loader.dataset):.4f}, R2 = {r2:.4f}')
+    print(f'Test result: MSE = {mse_error:.4f}, MAE = {mae_error:.4f}, R2 = {r2:.4f}')
 
     example_result = run_example(model, core_data, device)
 

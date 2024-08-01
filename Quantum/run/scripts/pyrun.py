@@ -20,9 +20,9 @@ def run(method_name='all'):
     elif method_name == 'XGBoost':
         XGBoost_run()
     elif method_name == 'all':
-        print('*'*50)
-        print('Running GP')
-        GP_run()
+        # print('*'*50)
+        # print('Running GP')
+        # GP_run()
         print('*'*50)
 
         print('Running SVR')

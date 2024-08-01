@@ -1,15 +1,24 @@
 import torch
 import torch.nn.functional as F
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 
 def test_(model, loader, device='cpu'):
     model.eval()
-    error = 0
+    all_outputs = []
+    all_targets = []
     with torch.no_grad():
         for data in loader:
             data = data.to(device)
             output = model(data)
-            error += F.l1_loss(output, data.y).item()
-    return error / len(loader.dataset)
+            all_outputs.append(output.cpu())
+            all_targets.append(data.y.cpu())
+
+    all_outputs = torch.cat(all_outputs, dim=0).numpy()
+    all_targets = torch.cat(all_targets, dim=0).numpy()
+
+    mae_error = mean_absolute_error(all_targets, all_outputs)
+
+    return mae_error
 
 def train_(
         model,

@@ -32,7 +32,7 @@ def train_(
     for data in loader:
         data = data.to(device)
         optimizer.zero_grad()
-        output = model(data)
+        output = model(data).reshape(-1,)
         loss = criterion(output, data.y)
         loss.backward()
         loss_all += loss.item()

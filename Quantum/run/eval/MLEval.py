@@ -35,10 +35,11 @@ def eval(
 
     Y_predict = model.predict(X_test)
 
-    mse = mean_squared_error(Y_test, Y_predict)
-    mae = mean_absolute_error(Y_test, Y_predict)
+    mse_error = mean_squared_error(Y_test, Y_predict)
+    mae_error = mean_absolute_error(Y_test, Y_predict)
+    rmse_error = mse_error**0.5
     r2 = r2_score(Y_test, Y_predict)
 
-    print(f'Test result: MSE = {mse:.4f}, MAE = {mae:.4f}, R2 = {r2:.4f}')
-
+    print(f'Test result: MSE = {mse_error:.4f}, RMSE = {rmse_error:.4f}, MAE = {mae_error:.4f}, R2 = {r2:.4f}')
+    
     run_example(model, (X_test, Y_test), (X_train, Y_train))

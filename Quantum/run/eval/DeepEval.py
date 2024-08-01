@@ -74,9 +74,10 @@ def eval(
 
     mse_error = mean_squared_error(all_targets, all_outputs)
     mae_error = mean_absolute_error(all_targets, all_outputs)
+    rmse_error = mse_error**0.5
     r2 = r2_score(all_targets, all_outputs)
 
-    print(f'Test result: MSE = {mse_error:.4f}, MAE = {mae_error:.4f}, R2 = {r2:.4f}')
+    print(f'Test result: MSE = {mse_error:.4f}, RMSE = {rmse_error:.4f}, MAE = {mae_error:.4f}, R2 = {r2:.4f}')
 
     example_result = run_example(model, core_data, device)
 

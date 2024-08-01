@@ -3,6 +3,7 @@ from ..examples.SVR_QM7 import run as SVR_run
 from ..examples.SimpleGNN_QM7 import run as SimpleGNN_run
 from ..examples.linear_QM7 import run as linear_run
 from ..examples.mlp_QM7 import run as mlp_run
+from ..examples.GAT_QM7 import run as GAT_run
 from ..examples.XGBoost_QM7 import run as XGBoost_run
 
 def run(method_name='all'):
@@ -42,6 +43,10 @@ def run(method_name='all'):
 
         print('Running XGBoost')
         XGBoost_run()
+        print('*'*50)
+
+        print('Running GAT')
+        GAT_run()
         print('*'*50)
     else:
         print('''
